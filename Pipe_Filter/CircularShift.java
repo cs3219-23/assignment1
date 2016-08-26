@@ -2,12 +2,22 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class CircularShift {
+public class CircularShift extends Filter {
 
 	ArrayList<String> newData = new ArrayList<String>();
+	ArrayList<String> data = null;
+	ArrayList<String> ignoredWords = null;
+	ArrayList<ArrayList<String>> sendData = new ArrayList<ArrayList<String>>();
 	
-	public void shift (ArrayList<String> data, ArrayList<String> ignoredWords) {
-		
+	@Override
+	void receive(ArrayList<ArrayList<String>> data) {
+		this.data = data.get(0);
+		this.ignoredWords = data.get(1);
+		transform();
+	}
+
+	@Override
+	void transform() {
 		// total number of lines
 		for (int i = 0; i<data.size(); i++) {
 			String[] splited = data.get(i).split("\\s+");
@@ -41,5 +51,13 @@ public class CircularShift {
 		}
 		
 		Collections.sort(newData);
+		sendData.add(newData);
+		forward();
+	}
+
+	@Override
+	void forward() {
+		// TODO Auto-generated method stub
+		nextPipe.receive(sendData);
 	}
 }
