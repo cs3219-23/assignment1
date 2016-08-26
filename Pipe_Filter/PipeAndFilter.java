@@ -11,6 +11,8 @@ public class PipeAndFilter {
 		Pipe circularShiftPipe = new Pipe();
 		Filter alphabetizerFilter = new Alphabetizer();
 		Pipe alphabetizerPipe = new Pipe();
+		Filter capitalizerFilter = new Capitalizer();
+		Pipe capitalizerPipe = new Pipe();
 		Sink sink = new Sink();
 
 		// setting the pipe-line
@@ -19,8 +21,9 @@ public class PipeAndFilter {
 		circularShiftFilter.setNextPipe(circularShiftPipe);
 		circularShiftPipe.setNextFilter(alphabetizerFilter);
 		alphabetizerFilter.setNextPipe(alphabetizerPipe);
-		circularShiftPipe.setNextFilter(alphabetizerFilter);
-		alphabetizerPipe.setSink(sink);
+		alphabetizerPipe.setNextFilter(capitalizerFilter);
+		capitalizerFilter.setNextPipe(capitalizerPipe);
+		capitalizerPipe.setSink(sink);
 		
 		// feed in data and begin sequence
 		pump.dataIn(args);
