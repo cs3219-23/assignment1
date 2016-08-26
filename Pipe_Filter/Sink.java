@@ -1,17 +1,16 @@
-import java.util.ArrayList;
 
 public class Sink {
 	
-	ArrayList<String> data = null;
+	Data data = null;
 	
-	public void receive(ArrayList<ArrayList<String>> data) {
-		this.data = data.get(0);
+	public void receive(Data data) {
+		this.data = data;
 		display();
 	}
 	
 	public void display () {
-		for (int i = 0; i<data.size(); i++) {
-			System.out.println(data.get(i));
+		for (int i = 0; i<data.getData().size(); i++) {
+			System.out.println(data.getData().get(i));
 		}
 	}
 }

@@ -1,16 +1,22 @@
-import java.util.ArrayList;
 
 public abstract class Filter {
 	
 	Pipe nextPipe = null;
+	Data data = null;
 	
 	public void setNextPipe(Pipe pipe) {
 		nextPipe = pipe;
 	}
 	
-	abstract void receive(ArrayList<ArrayList<String>> data);
+	public void receive(Data data) {
+		this.data = data;
+		transform();
+	}
 	
-	abstract void transform();
-	
-	abstract void forward();
+	public void forward() {
+		nextPipe.receive(data);
+	}
+
+	abstract void transform();	
+
 }

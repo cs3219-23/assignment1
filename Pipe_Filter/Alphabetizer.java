@@ -2,36 +2,20 @@ import java.util.ArrayList;
 
 public class Alphabetizer extends Filter {
 	
-	ArrayList<String> data = null;
-	ArrayList<ArrayList<String>> sendData = new ArrayList<ArrayList<String>>();
-	
-	@Override
-	void receive(ArrayList<ArrayList<String>> data) {
-		// TODO Auto-generated method stub
-		this.data = data.get(0);
-		transform();
-	}
-
 	@Override
 	void transform() {
 		// TODO Auto-generated method stub
-		
-		for (int i = 0; i<data.size(); i++) {	
-			if (Character.isUpperCase(data.get(i).charAt(0))) {
+		ArrayList<String> lines = data.getData();
+		for (int i = 0; i<lines.size(); i++) {	
+			if (Character.isUpperCase(lines.get(i).charAt(0))) {
 				continue;
 			} else {
-				String s = data.get(i).substring(0, 1).toUpperCase() + data.get(i).substring(1);
-				data.set(i, s);
+				String s = lines.get(i).substring(0, 1).toUpperCase() + lines.get(i).substring(1);
+				lines.set(i, s);
 			}
 		}
-		sendData.add(data);
+		data.setData(lines);
 		forward();
 	}
-
-	@Override
-	void forward() {
-		// TODO Auto-generated method stub
-		nextPipe.receive(sendData);
-	}
-
+	
 }

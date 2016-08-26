@@ -1,7 +1,7 @@
-import java.util.ArrayList;
 
 public class Pipe {
-	ArrayList<ArrayList<String>> data = null;
+	
+	Data data = null;
 	Filter nextFilter = null;
 	Sink sink = null;
 	
@@ -13,7 +13,7 @@ public class Pipe {
 		this.sink = sink;
 	}
 	
-	public void receive(ArrayList<ArrayList<String>> data) {
+	public void receive(Data data) {
 		this.data = data;
 		forward();
 	}

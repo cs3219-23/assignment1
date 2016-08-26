@@ -4,23 +4,16 @@ import java.util.Collections;
 
 public class CircularShift extends Filter {
 
-	ArrayList<String> newData = new ArrayList<String>();
-	ArrayList<String> data = null;
-	ArrayList<String> ignoredWords = null;
-	ArrayList<ArrayList<String>> sendData = new ArrayList<ArrayList<String>>();
-	
-	@Override
-	void receive(ArrayList<ArrayList<String>> data) {
-		this.data = data.get(0);
-		this.ignoredWords = data.get(1);
-		transform();
-	}
+	ArrayList<String> shiftedLines = new ArrayList<String>();
 
 	@Override
 	void transform() {
+		ArrayList<String> lines = data.getData();
+		ArrayList<String> ignoredWords = data.getIgnoredWords();
+		
 		// total number of lines
-		for (int i = 0; i<data.size(); i++) {
-			String[] splited = data.get(i).split("\\s+");
+		for (int i = 0; i<lines.size(); i++) {
+			String[] splited = lines.get(i).split("\\s+");
 			ArrayList<String> list = new ArrayList<String>(Arrays.asList(splited));
 			
 			// total number of words/shifts
@@ -44,20 +37,14 @@ public class CircularShift extends Filter {
 						line += list.get(l) + " ";
 					}
 					line = line.trim();
-					System.out.println("Line is : "+line);
-					newData.add(line);
+					shiftedLines.add(line);
 				}
 			}
 		}
 		
-		Collections.sort(newData);
-		sendData.add(newData);
+		Collections.sort(shiftedLines);
+		data.setData(shiftedLines);
 		forward();
 	}
 
-	@Override
-	void forward() {
-		// TODO Auto-generated method stub
-		nextPipe.receive(sendData);
-	}
 }
