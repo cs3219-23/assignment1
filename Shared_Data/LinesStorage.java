@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 public class LinesStorage{
 	
@@ -12,6 +13,10 @@ public class LinesStorage{
 		store.add(line);
 	}
 	
+	public boolean addLines(List<String> lines){
+		return store.addAll(lines);
+	}
+	
 	public void removeLine(String line){
 		for(int i = 0; i < store.size(); i++){
 			if(store.get(i).equals(line)){
@@ -19,6 +24,14 @@ public class LinesStorage{
 				return;
 			}
 		}
+	}
+	
+	public void removeLine(int index){
+		store.remove(index);
+	}
+	
+	public void removeAllLines(){
+		store.clear();
 	}
 	
 	public String getLine(int index){

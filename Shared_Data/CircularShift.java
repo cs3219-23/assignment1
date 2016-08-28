@@ -8,8 +8,8 @@ public class CircularShift {
 		// Initialise storages and variables
 		LineStorage lineStore = LineStorage.getInstance();
 		IgnoreStorage ignoreStore = IgnoreStorage.getInstance();
-		ResultStorage resultStore = ResultStorage.getInstance();
 		ArrayList<String> ignoredWords = ignoreStore.getAllLines();
+		ArrayList<String> lines = new ArrayList<String>();
 		
 		// Shift the lines
 		for (int i = 0; i < lineStore.size(); i++) {
@@ -34,12 +34,16 @@ public class CircularShift {
 						line += word + " ";
 					}
 					line = line.trim();
-					resultStore.addLine(line);
+					lines.add(line);
 				}
 				
 				// Shift the word
 				words.add(words.poll());
 			}
 		}
+		
+		// Update the storage
+		lineStore.removeAllLines();
+		lineStore.addLines(lines);
 	}
 }
