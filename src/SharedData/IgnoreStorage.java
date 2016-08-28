@@ -1,3 +1,4 @@
+package SharedData;
 public class IgnoreStorage extends LinesStorage {
 	private static IgnoreStorage ignoreStore;
 	

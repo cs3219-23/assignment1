@@ -1,3 +1,4 @@
+package SharedData;
 import java.util.ArrayList;
 
 public class Capitalizer {

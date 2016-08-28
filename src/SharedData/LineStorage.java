@@ -1,3 +1,4 @@
+package SharedData;
 public class LineStorage extends LinesStorage {
 	private static LineStorage lineStore;
 	

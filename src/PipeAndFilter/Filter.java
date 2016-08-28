@@ -1,3 +1,4 @@
+package PipeAndFilter;
 
 public abstract class Filter {
 	

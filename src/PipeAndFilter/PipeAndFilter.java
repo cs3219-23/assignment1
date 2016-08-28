@@ -1,9 +1,10 @@
+package PipeAndFilter;
 import java.io.IOException;
 
 public class PipeAndFilter {
-
-	public static void main(String[] args) throws IOException {
-		
+	
+	public PipeAndFilter (String[] args) throws IOException {
+	
 		// declaration of objects
 		Pump pump = new Pump();
 		Pipe pumpPipe = new Pipe();
@@ -29,5 +30,5 @@ public class PipeAndFilter {
 		pump.dataIn(args);
 		pump.start();
 	}
-
+	
 }
