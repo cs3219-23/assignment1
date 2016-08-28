@@ -18,22 +18,26 @@ public class KWIC {
 	
 	public static void main(String[] args) throws IOException {
 		
-		System.out.println("Choose the architecture design you want to run the program in: ");
-		System.out.println("1 -> Shared Data");
-		System.out.println("2 -> Pipe-and-Filter");
-		System.out.print("Choice : ");
-		Scanner sc = new Scanner (System.in);
-		String choice = sc.next();
-		
-		if (choice.equals(SHARED_DATA)) {			
-			new Master(args);			
-		} else if (choice.equals(PIPE_AND_FILTER)) {			
-			new PipeAndFilter(args);			
+		if (args.length == 2) {
+			System.out.println("Choose the architecture design you want to run the program in: ");
+			System.out.println("1 -> Shared Data");
+			System.out.println("2 -> Pipe-and-Filter");
+			System.out.print("Choice : ");
+			Scanner sc = new Scanner (System.in);
+			String choice = sc.next();
+			
+			if (choice.equals(SHARED_DATA)) {			
+				new Master(args);			
+			} else if (choice.equals(PIPE_AND_FILTER)) {			
+				new PipeAndFilter(args);			
+			} else {
+				System.out.println("Invalid choice!");
+			}			
+			sc.close();
 		} else {
-			System.out.println("Invalid choice!");
+			System.out.println("Invalid arguments. Exiting program now..");
+			System.exit(0);
 		}
-		
-		sc.close();
 
 	}
 

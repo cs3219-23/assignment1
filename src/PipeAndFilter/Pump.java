@@ -18,7 +18,6 @@ public class Pump {
 		ArrayList<String> lines = new ArrayList<String>();
 		ArrayList<String> ignoredWords = new ArrayList<String>();
 		
-        if (args.length == 2) {
         	BufferedReader in;
 			String text;
             File file = new File(args[0]);
@@ -47,10 +46,7 @@ public class Pump {
     		
     		data.setData(lines);
     		data.setIgnoredWords(ignoredWords);
-        } else {
-        	System.out.println("Invalid arguments. Exiting program now..");
-        	System.exit(0);
-        }
+
 	}
 	
 	public void start() {
