@@ -4,12 +4,6 @@ import java.io.IOException;
 public class Master{
 	
 	public Master(String[] args) {
-		// Check arguments
-		if(args.length < 2){
-			System.out.println("Usage: Master <word file path> <ignore word file path>");
-			return;
-		}
-		
 		// Read lines from files, initialise Storage
 		if(!initFileStorage(args[0], args[1])){
 			return;

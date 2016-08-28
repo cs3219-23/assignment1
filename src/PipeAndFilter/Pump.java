@@ -28,7 +28,7 @@ public class Pump {
     			}
     			in.close();
     		} else {
-    			System.out.println("The file for input lines doesnt exist. Exiting program now..");
+    			System.out.println("Word file '" + args[0] + "' not found");
     			System.exit(0);
     		}
     		
@@ -40,7 +40,7 @@ public class Pump {
     			}
     			in.close();
     		}  else {
-    			System.out.println("The file for 'words to ignore' doesnt exist. Exiting program now..");
+    			System.out.println("Ignore file '" + args[1] + "' not found");
     			System.exit(0);
     		}
     		
