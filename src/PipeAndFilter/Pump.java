@@ -18,7 +18,7 @@ public class Pump {
 		ArrayList<String> lines = new ArrayList<String>();
 		ArrayList<String> ignoredWords = new ArrayList<String>();
 		
-        if (args.length > 0) {
+        if (args.length == 2) {
         	BufferedReader in;
 			String text;
             File file = new File(args[0]);
@@ -28,6 +28,9 @@ public class Pump {
     				lines.add(text);
     			}
     			in.close();
+    		} else {
+    			System.out.println("The file for input lines doesnt exist. Exiting program now..");
+    			System.exit(0);
     		}
     		
             file = new File(args[1]);
@@ -37,10 +40,17 @@ public class Pump {
     				ignoredWords.add(text);
     			}
     			in.close();
-    		}    		
+    		}  else {
+    			System.out.println("The file for 'words to ignore' doesnt exist. Exiting program now..");
+    			System.exit(0);
+    		}
+    		
     		data.setData(lines);
     		data.setIgnoredWords(ignoredWords);
-        }       
+        } else {
+        	System.out.println("Invalid arguments. Exiting program now..");
+        	System.exit(0);
+        }
 	}
 	
 	public void start() {
